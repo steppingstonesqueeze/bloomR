@@ -4,7 +4,8 @@ library(bloomR)
 
 num_items <- 5000
 num_probes <- 100000
-bf <- bloom_create(n = num_items, p = 0.01)
+false_positive_rate <- 0.01
+bf <- bloom_create(n = num_items, p = false_positive_rate)
 
 # print bits and hash function numbers
 cat("m = ", bf$m, "\n")
@@ -20,5 +21,5 @@ probes <- paste0("p_", 1:num_probes)
 hits <- sum(vapply(probes, function(p) bloom_check(bf, p), logical(1))) # is there a collision on all hashes 
 fp <- hits/length(probes)
 
-cat("fill_ratio=", round(bloom_fill_ratio(bf), 3),
-    "  empirical_fp=", round(fp, 4), "\n")
+cat("fill ratio =", round(bloom_fill_ratio(bf), 3),
+    "  empirical false positive rate =", round(fp, 4), "\n")
