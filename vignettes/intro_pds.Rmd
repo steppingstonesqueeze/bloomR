@@ -1,0 +1,13 @@
+---
+title: "Basic Bloom Filter implementation in R"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+devtools::install("your-path-to-package")
+
+# use package
+library(R_bloom)
+```
+
+This vignette shows quick examples for Bloom filters. Hashing algorithms are from the package "digest". 
